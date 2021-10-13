@@ -8,7 +8,8 @@ const UserSchema = mongoose.Schema({
     ],
     friends: [
         String
-    ]
+    ],
+    friendCount: Number
 })
 
 const model = mongoose.model('users', UserSchema)

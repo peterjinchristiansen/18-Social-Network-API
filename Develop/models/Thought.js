@@ -1,11 +1,10 @@
 const mongoose = require('mongoose')
 
 const ThoughtSchema = mongoose.Schema({
+    id: String,
     content: String,
     createdAt: Date,
-    username: [
-        String
-    ],
+    username: String,
     reactions: [{
         id: String,
         reactionBody: String,
