@@ -3,6 +3,12 @@ const User = require('../models/User')
 const Thought = require('../models/Thought')
 
 // Get all existing users
+
+exports.getAll = async (req, res) => {
+    let allUsers = []
+    const getUser = await User.findAll({ id: req.params.id })
+}
+
 exports.getAll = async (req, res) => {
     console.log('USER => GETALL')
     let allUsers = []
