@@ -6,12 +6,12 @@ const UserSchema = mongoose.Schema({
     username: {
         type: String,
         unique: true,
-        required: true,
+        required: [true, 'You must send a username in your request'],
         trim: true
     },
     email: {
         type: String,
-        required: true,
+        required: [true, 'You must send an email in your request'],
         unique: true
     },
     thoughts: [{
@@ -21,8 +21,13 @@ const UserSchema = mongoose.Schema({
     friends: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
-    }],
-    friendCount: Number
+    }]
+})
+
+UserSchema.virtual('friendCount').get(() => {
+    return this.friends.length
 })
 
 const model = mongoose.model('users', UserSchema)
+
+module.exports = model

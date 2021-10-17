@@ -1,1 +1,2 @@
-Everything you need to do will be the notes, in the controllers file
+Make sure emails are valid
+createdAt (thoughts/reactions) - default is Date.now()

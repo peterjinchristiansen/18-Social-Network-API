@@ -1,4 +1,6 @@
 const router = require('express').Router()
+const Thought = require('../models/Thought')
+
 const userControl = require('../controllers/userControl')
 const friendControl = require('../controllers/friendControl')
 const thoughtControl = require('../controllers/thoughtControl')
@@ -20,3 +22,5 @@ router.post('/thoughts/:thoughtid/reactions/:userid', reactionControl.create)
 router.delete('/thoughts/:thoughtid/reactions/:reactionid', reactionControl.delete)
 
 module.exports = router;
+
+// update thought not updating

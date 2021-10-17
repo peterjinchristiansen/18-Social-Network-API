@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 
 const DBconnect = async () => {
-
     try {
         await mongoose.connect('mongodb://localhost/socialNetworkAPI', {
             useNewUrlParser: true,
@@ -12,8 +11,6 @@ const DBconnect = async () => {
     } catch (error) {
         console.log('Failed to connect')
     }
-
-
 }
 
 module.exports = DBconnect

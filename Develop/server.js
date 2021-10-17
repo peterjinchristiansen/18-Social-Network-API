@@ -6,6 +6,7 @@ const PORT = 4444
 
 DBconnect()
 
+app.use(express.json())
 app.use('/api', require('./routes/apiRoutes'))
 
 app.listen(PORT, () => {
