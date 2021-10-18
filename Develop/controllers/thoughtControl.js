@@ -1,6 +1,11 @@
 const User = require('../models/User')
 const Thought = require('../models/Thought')
 
+const formatDate = (date) => {
+    console.log(date)
+    console.log(date.getMonth)
+}
+
 exports.getAll = async (req, res) => {
     try {
         const getThoughts = await Thought.find()

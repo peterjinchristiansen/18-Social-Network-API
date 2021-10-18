@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
-const User = require('./User')
 
-const formatDate = () => {
-    return Date.now()
+const formatDate = (timestamp) => {
+    timestamp = timestamp.toString().split(' ')
+    return `${timestamp[1]} ${timestamp[2]}, ${timestamp[3]}`
 }
 
 const reactionSchema = mongoose.Schema({
@@ -21,7 +21,8 @@ const reactionSchema = mongoose.Schema({
     },
     createdAt: {
         type: Date,
-        default: Date.now()
+        default: Date.now(),
+        get: formatDate
     }
 })
 
@@ -35,16 +36,19 @@ const ThoughtSchema = mongoose.Schema({
     },
     createdAt: {
         type: Date,
-        default: Date.now()
+        default: Date.now(),
+        get: timestamp => formatDate(timestamp)
     },
     thoughtCreator: {
         type: String,
         required: [true, "Not a valid user ID"]
     },
     reactions: [reactionSchema]
+}, {
+    toJSON: { getters: true }
 })
 
-ThoughtSchema.virtual('reactionCount').get(() => {
+ThoughtSchema.virtual('reactionCount').get(function () {
     return this.reactions.length
 })
 

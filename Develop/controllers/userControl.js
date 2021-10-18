@@ -12,6 +12,10 @@ exports.getAll = async (req, res) => {
 }
 
 exports.create = async (req, res) => {
+    let regexExpression = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/
+    if(!regexExpression.test(req.body.email)) {
+        return res.json({ message: 'Not a valid email address' })
+    }
     try {
         await User.create({
             username: req.body.username,

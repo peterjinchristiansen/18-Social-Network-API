@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const Thought = require('./Thought')
 
 const UserSchema = mongoose.Schema({
     userId: mongoose.Schema.Types.ObjectId,
@@ -24,7 +23,7 @@ const UserSchema = mongoose.Schema({
     }]
 })
 
-UserSchema.virtual('friendCount').get(() => {
+UserSchema.virtual('reactionCount').get(function () {
     return this.friends.length
 })
 

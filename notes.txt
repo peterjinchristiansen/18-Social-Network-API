@@ -1,2 +1,0 @@
-Make sure emails are valid
-createdAt (thoughts/reactions) - default is Date.now()
