@@ -5,8 +5,6 @@ const formatDate = (timestamp) => {
     return moment(timestamp).format('dddd, MMMM Do YYYY, h:mm a')
 }
 
-
-
 const ThoughtSchema = mongoose.Schema({
     thoughtId: mongoose.Schema.Types.ObjectId,
     thoughtText: {
@@ -41,8 +39,10 @@ const ThoughtSchema = mongoose.Schema({
         createdAt: {
             type: Date,
             default: Date.now(),
-            get: formatDate
+            get: timestamp => formatDate(timestamp)
         }
+    }, {
+        toJSON: { getters: true }
     })]
 }, {
     toJSON: { getters: true }

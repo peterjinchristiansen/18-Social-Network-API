@@ -43,8 +43,11 @@ exports.getOne = async (req, res) => {
 }
 
 exports.update = async (req, res) => {
-    if(!testEmail(req.body.email)) {
-        return res.json({ ERROR: 'Email invalid' })
+    if(req.body.email) {
+        testEmail(req.body.email)
+        if(!testEmail) {
+            return res.json({ ERROR: 'Email invalid' })
+        }
     }
     try {
         await User.findByIdAndUpdate(
