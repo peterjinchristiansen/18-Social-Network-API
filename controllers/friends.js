@@ -6,9 +6,9 @@ exports.add = async (req, res) => {
             { _id: req.params.userid },
             { $push: { friends: req.params.friendid } }
         )
-        return res.json({ message: 'Friend successfully added to user' })
+        return res.json({ MESSAGE: 'Friend successfully added to user' })
     } catch (error) {
-        return res.json(error.message)
+        return res.json({ ERROR: error.message })
     }
 }
 
@@ -18,8 +18,8 @@ exports.remove = async (req, res) => {
             { _id: req.params.userid },
             { $pull: { friends: req.params.friendid } }
         )
-        return res.json({ message: 'Friend successfully deleted' })
+        return res.json({ MESSAGE: 'Friend successfully deleted' })
     } catch (error) {
-        return res.json(error.message)
+        return res.json({ ERROR: error.message })
     }
 }

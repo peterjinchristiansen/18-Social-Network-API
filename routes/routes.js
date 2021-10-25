@@ -1,10 +1,8 @@
 const router = require('express').Router()
-const Thought = require('../models/Thought')
-
-const userControl = require('../controllers/userControl')
-const friendControl = require('../controllers/friendControl')
-const thoughtControl = require('../controllers/thoughtControl')
-const reactionControl = require('../controllers/reactionControl')
+const userControl = require('../controllers/users')
+const friendControl = require('../controllers/friends')
+const thoughtControl = require('../controllers/thoughts')
+const reactionControl = require('../controllers/reactions')
 
 router.get('/users', userControl.getAll)
 router.get('/users/:userid', userControl.getOne)
