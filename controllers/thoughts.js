@@ -1,11 +1,6 @@
 const User = require('../models/User')
 const Thought = require('../models/Thought')
 
-const formatDate = (date) => {
-    console.log(date)
-    console.log(date.getMonth)
-}
-
 exports.getAll = async (req, res) => {
     try {
         const getThoughts = await Thought.find()
@@ -58,7 +53,6 @@ exports.remove = async (req, res) => {
     try {
         const findThoughtCreator = await Thought.findById(req.params.thoughtid)
             .then(thought => {
-                console.log(thought._id)
                 return thought.thoughtCreator
             })
         await User.findByIdAndUpdate(
