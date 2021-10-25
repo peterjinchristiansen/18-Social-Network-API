@@ -10,9 +10,9 @@ exports.create = async (req, res) => {
             }}},
             { runValidators: true }
         )
-        return res.json({ message: 'Reaction successfully created' })
+        return res.json({ MESSAGE: 'Reaction successfully created' })
     } catch (error) {
-        return res.json(error.message)
+        return res.json({ ERROR: error.message })
     }
 }
 
@@ -22,8 +22,8 @@ exports.delete = async (req, res) => {
             { _id: req.params.thoughtid },
             { $pull: { reactions: { _id: req.params.reactionid }}}
         )
-        return res.json({ message: 'Reaction successfully deleted' })
+        return res.json({ MESSAGE: 'Reaction successfully deleted' })
     } catch (error) {
-        return res.json(error.message)
+        return res.json({ ERROR: error.message })
     }
 }

@@ -9,9 +9,9 @@ const formatDate = (date) => {
 exports.getAll = async (req, res) => {
     try {
         const getThoughts = await Thought.find()
-        return res.json({ thoughts: getThoughts })
+        return res.json({ THOUGHTS: getThoughts })
     } catch (error) {
-        return res.json(error.message)
+        return res.json({ ERROR: error.message })
     }
 
 }
@@ -27,18 +27,18 @@ exports.create = async (req, res) => {
                     { $push: { thoughts: thought._id }}
                 )
             })
-        return res.json({ message: 'Thought successfully created' })
+        return res.json({ MESSAGE: 'Thought successfully created' })
     } catch (error) {
-        return res.json(error.message)
+        return res.json({ ERROR: error.message })
     }
 }
 
 exports.getOne = async (req, res) => {
     try {
         const findThought = await Thought.findById(req.params.thoughtid)
-        return res.json({ thought: findThought })
+        return res.json({ THOUGHT: findThought })
     } catch (error) {
-        return res.json(error.message)
+        return res.json({ ERROR: error.message })
     }
 }
 
@@ -48,9 +48,9 @@ exports.update = async (req, res) => {
             { _id: req.params.thoughtid },
             { $set: { thoughtText: req.body.thought }}
         )
-        return res.json('Thought successfully updated')
+        return res.json({ MESSAGE: 'Thought successfully updated' })
     } catch (error) {
-        return res.json(error.message)
+        return res.json({ ERROR: error.message })
     }
 }
 
@@ -68,8 +68,8 @@ exports.remove = async (req, res) => {
         await Thought.findByIdAndDelete(
             { _id: req.params.thoughtid }
         )
-        return res.json({ message: 'Thought successfully deleted' })
+        return res.json({ MESSAGE: 'Thought successfully deleted' })
     } catch (error) {
-        return res.json(error.message)
+        return res.json({ ERROR: error.message })
     }
 }

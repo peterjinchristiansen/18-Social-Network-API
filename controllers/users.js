@@ -37,9 +37,6 @@ exports.create = async (req, res) => {
 exports.getOne = async (req, res) => {
     const findUser = await User.findById(req.params.userid)
     return res.json({ USER: findUser })
-        .catch(error => {
-            return res.json({ ERROR: error.message })
-        })
 }
 
 exports.update = async (req, res) => {
